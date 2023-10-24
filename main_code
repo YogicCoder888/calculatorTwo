@@ -1,0 +1,136 @@
+#Importing mathematical operation of sqrt from Python.
+from math import pi, sqrt
+
+def start_up():
+  """
+  Function to start up the calculator. 
+
+Args: none
+
+Return: print statement
+
+Raise: none
+  """
+  
+  print(f"Welcome to the Devoted calculator \nEnter your first number followed by an operator and then your second number \nplease type : \n+ for Addition \n- for Subtarction \n/ for Division \n* for Multiplication \nP for to the power of \nM for modulo \nS for Square root \nA for circle area\n% for percentage\n")
+
+def math():
+   """
+  Function for mathematical calculations with additional operations compared to version 1,version 2 and version 3.
+    
+  while True loop being used to create a constant loop until a break is found. This happens when user input is not a "Yes" (line 132).
+
+  Args:
+  Ans1 = float 
+  Calc = operator +, -, *, /, P, M, S, A, %
+  Ans2 = float
+
+  Returns:
+   Returns the result of the mathematical operation between two numbers.
+   + creates addition operation between the numbers.
+   - creates subtraction operation between the numbers.
+   * creates multiplication operation between the numbers
+   / creates division between the numbers
+   P creates to the power of between numbers
+   M creates the modulo for working out remainders
+   S creates the square root of a number
+   A creates operation for area of a circle
+   % creates percentage operation between numbers
+
+   Raise: 
+   Try block is used to detect errors in values of user input. 
+   Error is also raised where there is a division with the float 0. 
+  """
+
+#Asks user for input for ans1
+   ans1 = None
+   while True:
+    try:
+        if ans1 is None:
+             ans1 = float(input("Please enter your first number: \n"))
+    except ValueError:
+        print("Type a number")  
+        continue 
+      
+#Asks user for input for calc
+    calc = input("What would you like to do (+,-,/,*,%,P,M,S,A)?")
+     
+# looks for S in calc to work out square root before input 2 
+    if calc.lower() == "s":
+      result = sqrt(ans1)
+      print(f"The square root of {ans1} is", result)
+      ans1 = result
+      math()
+# looks for a in calc to work out ares of circle
+    elif calc.lower() == "a":
+      result = pi*(ans1**2)
+      print(f"The area of a circle with the radius of {ans1} is", result)
+      math()
+    else:
+      try:
+        ans2 = float(input("Please enter your second number: \n"))
+      except ValueError:
+        print("Start again. Type a number")
+        continue
+
+# calculation for addition
+    if calc == "+":
+        result = ans1 + ans2
+        print("Result:", result)
+        ans1 = result
+      
+# calculation for subtraction
+    elif calc == "-":
+        result = ans1 - ans2
+        print("Answer =", result)
+        ans1 = result
+      
+# calculation for division
+    elif calc == "/":
+      if ans2 == 0:
+        print ("You cannont divide by 0, choose another number !")
+        try:
+         ans2 = float(input("Please re-enter your second number: \n"))
+        except ValueError:
+         print("Start again. Type a number")
+        result = ans1 / ans2
+        print("Answer =", result)
+        ans1 = result
+      else:  
+        result = ans1 / ans2
+        print("Answer =", result)
+        ans1 = result
+        
+# calculation for multiplication      
+    elif calc == "*":
+        result = ans1 * ans2
+        print("Answer =", result)
+        ans1 = result
+      
+# calculation for to the power of
+    elif calc.lower() == "p":
+        result = ans1 ** ans2
+        print(f"{ans1} to the power of {ans2} =", result)
+        ans1 = result
+      
+# calculation for modulo
+    elif calc.lower() == "m":
+        result = ans1 % ans2
+        print(f"{ans1} mod {ans2} gives {result} remainders.")
+        ans1 = result
+      
+# calculation for Percentages   
+    elif calc == "%":
+        result = (ans1/100)*ans2
+        print(f"{ans1} % of {ans2} is {result}.")
+        ans1 = result
+    else:
+        print("Invalid input. Please use the correct operator and numbers.")
+      
+# asks the user if they want to perform another calculation resetting the code or exiting. Breaks code if answer not "Yes".
+    _another = input(f"Do you want to perform another calculation on top of {ans1} ? (yes/no)(no = reset): ").capitalize()
+    if _another != "Yes": 
+        math()
+#call functions    
+start_up()
+math()
