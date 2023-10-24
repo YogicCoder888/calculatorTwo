@@ -12,7 +12,7 @@ Return: print statement
 Raise: none
   """
   
-  print(f"Welcome to the Devoted calculator \nEnter your first number followed by an operator and then your second number \nplease type : \n+ for Addition \n- for Subtarction \n/ for Division \n* for Multiplication \nP for to the power of \nM for modulo \nS for Square root \nA for circle area\n% for percentage\n")
+  print(f"Welcome to the Devoted calculator \nEnter your first number followed by an operator and then your second number \nplease type : \n+ for Addition \n- for Subtraction \n/ for Division \n* for Multiplication \nP for to the power of \nM for modulo \nS for Square root \nA for circle area\n% for percentage\n")
 
 def math():
    """
